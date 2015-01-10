@@ -1,0 +1,18 @@
+
+function! BeforeEach() abort
+  tabnew
+  tabonly
+  for bufnr in range(1, bufnr('$'))
+    execute 'silent!' bufnr 'bunload!'
+  endfor
+endfunction
+
+function! State() abort
+  return { 'bufnrs': join(map(range(1, winnr('$')), 'winbufnr(v:val)'), '_'),
+        \  'width':  join(map(range(1, winnr('$')), 'winwidth(v:val)'), '_'),
+        \  'height': join(map(range(1, winnr('$')), 'winheight(v:val)'), '_'),
+        \  'winnr': winnr(), 'wincnt': winnr('$'), 'winrestcmd': winrestcmd(),
+        \  'tabnr': get(t:, 'winfix_tabid', tabpagenr()), 'tabcnt': tabpagenr('$') }
+endfunction
+
+" vim:ft=vim
