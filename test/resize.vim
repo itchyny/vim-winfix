@@ -193,3 +193,25 @@ function! s:suite.belvnew_5new_botnew_tabnew_tabclose_quit()
   let new_state = State()
   call s:assert.equals(old_state, new_state)
 endfunction
+
+function! s:suite.vnew_quit_vnew_quit_vnew()
+  5 vnew
+  quit
+  vnew
+  let old_state = State()
+  quit
+  vnew
+  let new_state = State()
+  call s:assert.equals(old_state.winrestcmd, new_state.winrestcmd)
+endfunction
+
+function! s:suite.new_quit_new_quit_new()
+  5 new
+  quit
+  new
+  let old_state = State()
+  quit
+  new
+  let new_state = State()
+  call s:assert.equals(old_state.winrestcmd, new_state.winrestcmd)
+endfunction
