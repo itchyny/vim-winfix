@@ -2,7 +2,7 @@
 " Filename: autoload/winfix.vim
 " Author: itchyny
 " License: MIT License
-" Last Change: 2015/01/24 15:23:09.
+" Last Change: 2015/05/23 20:23:58.
 " =============================================================================
 
 let s:save_cpo = &cpo
@@ -113,7 +113,9 @@ function! winfix#tabfocus() abort
   endif
   let tabnrs = {}
   for i in range(1, tabpagenr('$'))
-    let tabnrs[gettabvar(i, 'winfix_tabid')] = i
+    if gettabvar(i, 'winfix_tabid') !=# ''
+      let tabnrs[gettabvar(i, 'winfix_tabid')] = i
+    endif
   endfor
   let i = len(s:stack) - 2
   while i >= 0 && (s:stack[i].tabcnt > s:state.tabcnt
