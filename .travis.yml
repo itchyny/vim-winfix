@@ -11,9 +11,9 @@ install:
   - (if ! test -d $HOME/vim-7.3/bin; then cd $HOME/vim && git checkout . && git checkout v7.3 && ./configure --prefix=$HOME/vim-7.3 && make && make install; fi)
 
 script:
-  - /tmp/themis/bin/themis --reporter spec
-  - PATH=$HOME/vim-7.4/bin/:$PATH /tmp/themis/bin/themis --reporter spec
-  - PATH=$HOME/vim-7.3/bin/:$PATH /tmp/themis/bin/themis --reporter spec
+  - /tmp/themis/bin/themis
+  - PATH=$HOME/vim-7.4/bin/:$PATH /tmp/themis/bin/themis
+  - PATH=$HOME/vim-7.3/bin/:$PATH /tmp/themis/bin/themis
 
   - vint --version
   - vint plugin/ autoload/
