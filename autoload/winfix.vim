@@ -2,7 +2,7 @@
 " Filename: autoload/winfix.vim
 " Author: itchyny
 " License: MIT License
-" Last Change: 2015/05/23 20:23:58.
+" Last Change: 2017/04/04 11:24:57.
 " =============================================================================
 
 let s:save_cpo = &cpo
@@ -61,7 +61,8 @@ function! winfix#push() abort
 endfunction
 
 function! winfix#resize() abort
-  if winnr('$') < 2 || s:stack[-2].tabid !=# s:state.tabid
+  if winnr('$') < 2 || len(s:stack) < 2
+        \           || s:stack[-2].tabid !=# s:state.tabid
         \           || s:stack[-2].wincnt <= s:state.wincnt
     return
   endif
