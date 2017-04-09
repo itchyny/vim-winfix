@@ -18,10 +18,10 @@ cache:
     - $HOME/vim-7.3
 
 script:
-  - /tmp/themis/bin/themis
-  - PATH=$HOME/vim-7.4/bin/:$PATH /tmp/themis/bin/themis
-  - PATH=$HOME/vim-7.3.551/bin/:$PATH /tmp/themis/bin/themis
-  - PATH=$HOME/vim-7.3/bin/:$PATH /tmp/themis/bin/themis
+  - /tmp/themis/bin/themis --reporter tap
+  - PATH=$HOME/vim-7.4/bin/:$PATH /tmp/themis/bin/themis --reporter tap
+  - PATH=$HOME/vim-7.3.551/bin/:$PATH /tmp/themis/bin/themis --reporter tap
+  - PATH=$HOME/vim-7.3/bin/:$PATH /tmp/themis/bin/themis --reporter tap
 
   - vint --version
   - vint plugin/ autoload/
