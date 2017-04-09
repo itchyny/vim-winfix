@@ -11,7 +11,7 @@ function! s:suite.vnew_bel5new_topnew_tabmove_quit()
   below 5 new
   let old_state = State()
   top new
-  tabmove -1
+  -tabmove
   quit
   let new_state = State()
   call s:assert.equals(old_state, new_state)
@@ -23,7 +23,7 @@ function! s:suite.vnew_5new_topnew_tabmove_quit()
   5 new
   let old_state = State()
   top new
-  tabmove -1
+  -tabmove
   quit
   let new_state = State()
   call s:assert.equals(old_state, new_state)
@@ -35,7 +35,7 @@ function! s:suite.belvnew_bel5new_topnew_tabmove_quit()
   below 5 new
   let old_state = State()
   top new
-  tabmove -1
+  -tabmove
   quit
   let new_state = State()
   call s:assert.equals(old_state, new_state)
@@ -47,7 +47,7 @@ function! s:suite.belvnew_5new_topnew_tabmove_quit()
   5 new
   let old_state = State()
   top new
-  tabmove -1
+  -tabmove
   quit
   let new_state = State()
   call s:assert.equals(old_state, new_state)
@@ -61,7 +61,7 @@ function! s:suite.belvnew_bel5new_5new_topnew_tabmove_quit()
   5 new
   let old_state = State()
   top new
-  tabmove -1
+  -tabmove
   quit
   let new_state = State()
   call s:assert.equals(old_state, new_state)
@@ -73,7 +73,7 @@ function! s:suite.vnew_bel5new_botnew_tabmove_quit()
   below 5 new
   let old_state = State()
   bot new
-  tabmove -1
+  -tabmove
   quit
   let new_state = State()
   call s:assert.equals(old_state, new_state)
@@ -85,7 +85,7 @@ function! s:suite.vnew_5new_botnew_tabmove_quit()
   5 new
   let old_state = State()
   bot new
-  tabmove -1
+  -tabmove
   quit
   let new_state = State()
   call s:assert.equals(old_state, new_state)
@@ -97,7 +97,7 @@ function! s:suite.belvnew_bel5new_botnew_tabmove_quit()
   below 5 new
   let old_state = State()
   bot new
-  tabmove -1
+  -tabmove
   quit
   let new_state = State()
   call s:assert.equals(old_state, new_state)
@@ -109,7 +109,7 @@ function! s:suite.belvnew_5new_botnew_tabmove_quit()
   5 new
   let old_state = State()
   bot new
-  tabmove -1
+  -tabmove
   quit
   let new_state = State()
   call s:assert.equals(old_state, new_state)
@@ -123,7 +123,7 @@ function! s:suite.vnew_bel5new_topnew_tabnew_quit_tabmove_quit()
   top new
   tabnew
   quit
-  tabmove -1
+  -tabmove
   quit
   let new_state = State()
   call s:assert.equals(old_state, new_state)
@@ -137,7 +137,7 @@ function! s:suite.vnew_5new_topnew_tabnew_quit_tabmove_quit()
   top new
   tabnew
   quit
-  tabmove -1
+  -tabmove
   quit
   let new_state = State()
   call s:assert.equals(old_state, new_state)
@@ -151,7 +151,7 @@ function! s:suite.belvnew_bel5new_topnew_tabnew_quit_tabmove_quit()
   top new
   tabnew
   quit
-  tabmove -1
+  -tabmove
   quit
   let new_state = State()
   call s:assert.equals(old_state, new_state)
@@ -165,7 +165,7 @@ function! s:suite.belvnew_5new_topnew_tabnew_quit_tabmove_quit()
   top new
   tabnew
   quit
-  tabmove -1
+  -tabmove
   quit
   let new_state = State()
   call s:assert.equals(old_state, new_state)
@@ -179,7 +179,7 @@ function! s:suite.vnew_bel5new_botnew_tabnew_quit_tabmove_quit()
   bot new
   tabnew
   quit
-  tabmove -1
+  -tabmove
   quit
   let new_state = State()
   call s:assert.equals(old_state, new_state)
@@ -193,7 +193,7 @@ function! s:suite.vnew_5new_botnew_tabnew_quit_tabmove_quit()
   bot new
   tabnew
   quit
-  tabmove -1
+  -tabmove
   quit
   let new_state = State()
   call s:assert.equals(old_state, new_state)
@@ -207,7 +207,7 @@ function! s:suite.belvnew_bel5new_botnew_tabnew_quit_tabmove_quit()
   bot new
   tabnew
   quit
-  tabmove -1
+  -tabmove
   quit
   let new_state = State()
   call s:assert.equals(old_state, new_state)
@@ -222,7 +222,7 @@ function! s:suite.belvnew_5new_botnew_tabnew_tabclose_tabmove_tabonly_quit()
   tabnew
   vnew
   tabclose
-  tabmove -1
+  -tabmove
   tabonly
   quit
   tabnew
