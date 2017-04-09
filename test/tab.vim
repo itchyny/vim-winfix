@@ -1,5 +1,8 @@
 let s:suite = themis#suite('Test for tab focus.')
 let s:assert = themis#helper('assert')
+if !(v:version > 703 || v:version == 703 && has('patch551'))
+  finish
+endif
 
 function! s:suite.before_each()
   silent! call BeforeEach()
