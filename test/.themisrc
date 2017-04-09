@@ -2,6 +2,7 @@
 function! BeforeEach() abort
   tabnew
   tabonly
+  %bwipeout!
   for bufnr in range(1, bufnr('$'))
     execute 'silent!' bufnr 'bunload!'
   endfor
