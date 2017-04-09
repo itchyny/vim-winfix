@@ -66,7 +66,7 @@ function! s:suite.topnew_tabclose_quit()
   below 5 new
   let old_winnr = winnr()
   top new
-  +tabclose
+  3tabclose
   quit
   let new_winnr = winnr()
   tabclose
