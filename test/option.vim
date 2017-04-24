@@ -2,7 +2,7 @@ let s:suite = themis#suite('Test for window height after changing global options
 let s:assert = themis#helper('assert')
 
 function! s:suite.before_each()
-  silent! call BeforeEach()
+  call BeforeEach()
 endfunction
 
 function! Tabline() abort

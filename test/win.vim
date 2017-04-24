@@ -2,7 +2,7 @@ let s:suite = themis#suite('Test for window focus.')
 let s:assert = themis#helper('assert')
 
 function! s:suite.before_each()
-  silent! call BeforeEach()
+  call BeforeEach()
 endfunction
 
 function! s:suite.belvnew_topnew_quit()

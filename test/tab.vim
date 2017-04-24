@@ -5,7 +5,7 @@ if !(v:version > 703 || v:version == 703 && has('patch551'))
 endif
 
 function! s:suite.before_each()
-  silent! call BeforeEach()
+  call BeforeEach()
 endfunction
 
 function! s:suite.tabnew_tabprevious_tabnew_quit()
