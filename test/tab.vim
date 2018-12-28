@@ -87,7 +87,7 @@ function! s:suite.tabnew_tabclose_tabclose()
   tabclose
   call s:assert.equals(1, tabpagenr())
   tabclose
-  call s:assert.equals(1, tabpagenr())
+  call s:assert.equals(2, tabpagenr())
 endfunction
 
 function! s:suite.tabnext_tabclose_tabclose()

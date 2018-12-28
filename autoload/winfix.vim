@@ -2,29 +2,31 @@
 " Filename: autoload/winfix.vim
 " Author: itchyny
 " License: MIT License
-" Last Change: 2017/04/04 11:24:57.
+" Last Change: 2018/12/29 01:41:25.
 " =============================================================================
 
 let s:save_cpo = &cpo
 set cpo&vim
 
 function! winfix#enter() abort
-  if get(g:, 'winfix_enable', 1) && !get(s:, 'move')
+  if get(g:, 'winfix_enable', 1)
     call winfix#push()
-    if get(g:, 'winfix_tabfocus', 1)
-      call winfix#tabfocus()
-    endif
-    if get(g:, 'winfix_resize', 1)
-      call winfix#resize()
-    endif
-    if get(g:, 'winfix_winfocus', 1)
-      call winfix#winfocus()
-    endif
-    if get(s:, 'move')
-      doautocmd WinEnter
+    if !get(s:, 'move')
+      if get(g:, 'winfix_tabfocus', 1)
+        call winfix#tabfocus()
+      endif
+      if get(g:, 'winfix_resize', 1)
+        call winfix#resize()
+      endif
+      if get(g:, 'winfix_winfocus', 1)
+        call winfix#winfocus()
+      endif
+      if get(s:, 'move')
+        doautocmd WinEnter
+      endif
+      let s:move = 0
     endif
   endif
-  let s:move = 0
 endfunction
 
 let s:id = 0
@@ -51,6 +53,9 @@ let s:stack = []
 let s:stack_bufnrs = {}
 function! winfix#push() abort
   let s:state = winfix#state()
+  if len(s:stack) > 0 && get(s:, 'move')
+    call remove(s:stack, -1)
+  endif
   if len(s:stack) ==# 0 || s:stack[-1] !=# s:state
     call add(s:stack, s:state)
   endif
@@ -119,8 +124,7 @@ function! winfix#tabfocus() abort
     endif
   endfor
   let i = len(s:stack) - 2
-  while i >= 0 && (s:stack[i].tabcnt > s:state.tabcnt
-        \ || !has_key(tabnrs, s:stack[i].tabid))
+  while i >= 0 && !has_key(tabnrs, s:stack[i].tabid)
     let i -= 1
   endwhile
   if i >= 0
