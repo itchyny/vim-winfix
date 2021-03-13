@@ -88,3 +88,13 @@ function! s:suite.new_belnew_20vsplit_botvnew_quit()
   let new_state = State()
   call s:assert.equals(old_state, new_state)
 endfunction
+
+function! s:suite.vnew_tabnew_tabprevious_doautoall()
+  vnew
+  tabnew
+  tabprevious
+  let old_state = State()
+  doautoall WinEnter
+  let new_state = State()
+  call s:assert.equals(old_state, new_state)
+endfunction

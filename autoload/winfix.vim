@@ -2,14 +2,14 @@
 " Filename: autoload/winfix.vim
 " Author: itchyny
 " License: MIT License
-" Last Change: 2018/12/29 01:41:25.
+" Last Change: 2021/03/14 00:39:19.
 " =============================================================================
 
 let s:save_cpo = &cpo
 set cpo&vim
 
 function! winfix#enter() abort
-  if get(g:, 'winfix_enable', 1)
+  if get(g:, 'winfix_enable', 1) && !s:skip()
     call winfix#push()
     if !get(s:, 'move')
       if get(g:, 'winfix_tabfocus', 1)
@@ -28,6 +28,16 @@ function! winfix#enter() abort
     endif
   endif
 endfunction
+
+if exists('*win_gettype')
+  function! s:skip() abort
+    return win_gettype() ==# 'popup' || win_gettype() ==# 'autocmd'
+  endfunction
+else
+  function! s:skip() abort
+    return &buftype ==# 'popup'
+  endfunction
+endif
 
 let s:id = 0
 function! winfix#id() abort
